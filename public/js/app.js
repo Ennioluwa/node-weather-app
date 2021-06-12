@@ -10,11 +10,11 @@ const par2 = document.querySelector('#par2')
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const location = search.value
-    par1.textContent('Loading...')
+    par1.textContent= 'Loading...' 
     fetch('/weather?address='+ location).then((response)=> {
     response.json().then((data) => {
         if (data.error) {
-            par1.textContent(data.error);
+            par1.textContent= data.error;
         } else {
             par1.textContent = data.location;
             par2.textContent = data.forecast;
