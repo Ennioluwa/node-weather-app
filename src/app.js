@@ -5,11 +5,12 @@ const request = require('request')
 const forecast = require('./utils/forecast')
 const geocode = require('./utils/geocode')
 
+const app = express()
+const port = process.env.PORT || 3000
+
 const pathname = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
-
-const app = express()
 
 console.log(viewsPath);
 app.use(express.static(pathname))
@@ -70,8 +71,8 @@ app.get('*', (req, res) => {
         errorMessage: 'This page does not exist'
     })
 })
-app.listen('3000', () => {  
-    console.log('Listening on port 3000');
+app.listen(port, () => {  
+    console.log('Listening on port ' + port);
 })
 console.log(__dirname);
 console.log(path.join(__dirname,'../', '/public/index.html' ));
